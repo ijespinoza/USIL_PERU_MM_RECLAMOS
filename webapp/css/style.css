@@ -1,0 +1,8 @@
+/* Enter your custom styles here */
+.sapUiForm .sapUiFormTitle {
+    border-width: 0px;
+    border-color: #a8b3bd;
+    font-family: "72-Bold","72-Boldfull","72","72full",Arial,Helvetica,sans-serif;
+    height: 0rem;
+    line-height: 0rem;
+}

@@ -1,0 +1,103 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form">
+    <Dialog
+        id="ReservasDialog"
+        title="{i18n>lblReservaDialog}"
+        contentWidth="50%"
+        afterClose="onCloseMaterialSearch"
+        resizable="false">
+        <VBox>
+            <f:Form editable="true">
+                <f:title>
+                    <core:Title text="" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout
+                        labelSpanXL="4"
+                        labelSpanL="4"
+                        labelSpanM="4"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="1"
+                        emptySpanL="1"
+                        emptySpanM="1"
+                        emptySpanS="0"
+                        columnsXL="2"
+                        columnsL="2"
+                        columnsM="2"
+                        singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>lblCentro}">
+                                <f:fields>
+                                    <Input value="" id="txtCentro" enabled="false"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>lblFecCreacion}">
+                                <f:fields>
+                                    <DateRangeSelection name="RSDAT" id="dpFechaCreacion" showCurrentDateButton="true" showFooter="true" change="onFilterItemChange" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="">
+                                <f:fields>
+                                    <Button text="{i18n>btnBuscar}" press="onBuscarReserva" type="Emphasized" icon="sap-icon://search"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+
+            <Table
+                id="idTableSelectDialog"
+                items="{path:'oReserva>/'}" 
+                noDataText="No existen reservas"
+                mode="SingleSelectMaster"
+                selectionChange="onSelectReserva">
+                <columns>
+                    <Column hAlign="Begin">
+                        <Text text="{i18n>lblReserva}" />
+                    </Column>
+                    <Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+                        <Text text="{i18n>lblFecCreacion}" />
+                    </Column>
+                    <Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+                        <Text text="{i18n>lblResponsable}" />
+                    </Column>
+                    <Column hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+                        <Text text="{i18n>lblFechaEntrega}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                    <cells>
+                    <ObjectIdentifier title="{oReserva>RSNUM}" />
+                    <Text text="{oReserva>RSDAT}" />
+                    <Text text="{oReserva>SGTXT}" />
+                    <Text text="{oReserva>ABLAD}" />
+                    </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+    
+        <footer>
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button text="{i18n>btnCerrarDialog}" press="_cancelarDialogReserva" type="Reject" icon="sap-icon://decline"/>      
+                </content>
+            </Toolbar>
+        </footer>
+    </Dialog>
+</core:FragmentDefinition>

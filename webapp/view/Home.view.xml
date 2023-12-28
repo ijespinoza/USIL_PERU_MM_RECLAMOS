@@ -1,0 +1,266 @@
+<mvc:View controllerName="com.indra.gestionreclamos.controller.Home"
+     xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:f="sap.f">
+    <f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false" showFooter="true" xmlns:fb="sap.ui.comp.filterbar">
+        <f:title>
+            <f:DynamicPageTitle id="dynamicPageTitle">
+                <f:heading>
+                    <Title id="headerTitle" text="{i18n>title}" />
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+
+        <f:header>
+            <f:DynamicPageHeader id="dynamicPageHeader" pinnable="true">
+                <f:content>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+            <VBox id="vboxReservasTable">
+                <Panel expandable="false" headerText="{i18n>txtGeneracionReclamo}" width="auto">
+                    <content>
+                        <form:Form editable="true">
+                            <form:title>
+                                <core:Title text="" />
+                            </form:title>
+                            <form:layout>
+                                <form:ResponsiveGridLayout
+                                    labelSpanXL="5"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="1"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="4"
+                                    columnsL="4"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </form:layout>
+                            <form:formContainers>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>lblCentro}">
+                                            <form:fields>
+                                                <ComboBox id="cboCentro" name="centro" items="{path:'centro>/'}" required="true" change="onChangeCentro">
+                                                    <core:Item key="{centro>WERKS}" text="{centro>NAME1}" />
+                                                </ComboBox>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>lblReserva}">
+                                            <form:fields>
+                                                <Input
+                                                    id="txtReserva"
+                                                    type="Number"
+                                                    showValueHelp="true"
+                                                    valueHelpRequest="onOpenDialogReserva"
+                                                    required="true"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>lblNumReclamo}">
+                                            <form:fields>
+                                                <Input id="txtReclamo" value="" enabled="false"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>lblFecCreacion}">
+                                            <form:fields>
+                                                <DateTimePicker
+                                                    enabled="false"
+                                                    value= "{
+                                                        'path': '/valueDTP3',
+                                                        'type': 'sap.ui.model.type.DateTime',
+                                                        'formatOptions': {
+                                                            'pattern': 'dd/MM/yy hh:mm a'
+                                                        }
+                                                    }"
+                                                    placeholder="Enter Date"
+                                                    change="handleChange"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                            </form:formContainers>
+                        </form:Form>
+                    </content>
+                </Panel>
+
+                <Panel expandable="false" headerText="{i18n>txtInformacionReserva}" width="auto">
+                    <content>
+                        <form:Form editable="true">
+                            <form:title>
+                                <core:Title text="" />
+                            </form:title>
+                            <form:layout>
+                                <form:ResponsiveGridLayout
+                                    labelSpanXL="5"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="1"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="3"
+                                    columnsL="3"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </form:layout>
+                            <form:formContainers>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>lblEstadoReserva}">
+                                            <form:fields>
+                                                <Input value="{reserva>/WEMPF_R}" enabled="false"/>
+                                            </form:fields>
+                                        </form:FormElement>
+
+                                        <form:FormElement label="{i18n>lblResponsable}">
+                                            <form:fields>
+                                                <Input value="{reserva>/SGTXT}" enabled="false"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>lblFechaDespacho}">
+                                            <form:fields>
+                                                <DatePicker
+                                                    value="{reserva>/BDTER}"
+                                                    enabled="false"
+                                                    displayFormat="dd.MM.yyyy"
+                                                    valueFormat="yyyyMMdd"
+                                                    placeholder="Ingresar Fecha"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                        <form:FormElement label="{i18n>lblAula}">
+                                            <form:fields>
+                                                <Input value="{reserva>/WEMPF_A}" enabled="false"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>lblUsuario}">
+                                            <form:fields>
+                                                <Input value="{reserva>/USNAM}" enabled="false"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                            </form:formContainers>
+                        </form:Form>
+                    </content>
+                </Panel>
+
+                <Panel expandable="false" headerText="{i18n>txtAsignacionResponsableReclamo}" width="auto">
+                    <content>
+                        <form:Form editable="true">
+                            <form:title>
+                                <core:Title text="" />
+                            </form:title>
+                            <form:layout>
+                                <form:ResponsiveGridLayout
+                                    labelSpanXL="5"
+                                    labelSpanL="12"
+                                    labelSpanM="12"
+                                    labelSpanS="12"
+                                    adjustLabelSpan="false"
+                                    emptySpanXL="1"
+                                    emptySpanL="0"
+                                    emptySpanM="0"
+                                    emptySpanS="0"
+                                    columnsXL="2"
+                                    columnsL="2"
+                                    columnsM="2"
+                                    singleContainerFullSize="false" />
+                            </form:layout>
+                            <form:formContainers>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>lblTipo}">
+                                            <form:fields>
+                                                <ComboBox id="cboTipoReclamo" required="true" name="tiporeclamo" items="{path:'tiporeclamo>/'}">
+                                                    <core:Item key="{tiporeclamo>ZVALOR}" text="{tiporeclamo>ZVALOR}" />
+                                                </ComboBox>
+                                            </form:fields>
+                                        </form:FormElement>
+
+                                        <form:FormElement label="{i18n>lblResponsable}">
+                                            <form:fields>
+                                                <ComboBox id="cboResponsable" required="true" name="responsable" items="{path:'responsable>/'}">
+                                                    <core:Item key="{responsable>ZVALOR}" text="{responsable>ZVALOR}" />
+                                                </ComboBox>
+                                            </form:fields>
+                                        </form:FormElement>
+
+                                        <form:FormElement label="{i18n>lblEstadoReclamo}">
+                                            <form:fields>
+                                                <Input id="txtEstadoReclamo" value="Pendiente" enabled="false"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                                <form:FormContainer title="">
+                                    <form:formElements>
+                                    
+                                        <form:FormElement label="{i18n>lblDetalle}">
+                                            <form:fields>
+                                                <TextArea id="txtDetalle" required="true" value="" rows="3" maxLength="100" width="100%"/>
+                                            </form:fields>
+                                        </form:FormElement>
+
+                                        <form:FormElement label="{i18n>lblUsuario}">
+                                            <form:fields>
+                                                <Input id="IdUsuarioCreador" value="{userData>/userId}" enabled="false"/>
+                                            </form:fields>
+                                        </form:FormElement>
+
+                                    </form:formElements>
+                                </form:FormContainer>
+
+                            </form:formContainers>
+                        </form:Form>
+                    </content>
+                </Panel>
+            </VBox>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                <Button type="Emphasized" text="{i18n>btnLimpiar}" press="onLimpiar" />
+                <ToolbarSpacer/>
+                <Button type="Accept" text="{i18n>btnCrear}" press="onCrearReclamo">
+					<layoutData><OverflowToolbarLayoutData priority="NeverOverflow" /></layoutData>
+				</Button>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

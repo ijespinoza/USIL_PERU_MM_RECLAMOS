@@ -1,0 +1,234 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "com.indra.gestionreclamos",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.11.0",
+            "toolsId": "876f8a19-0343-45a2-8fbf-f90cf597f9dd"
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "com-indra-gestionreclamosinbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "GestionReclamos",
+                    "action": "Display",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": "sap-icon://list"
+                }
+            }
+        },
+        "dataSources": {
+            "ZMMGS_BUSCA_CENTRO": {
+                "uri": "/sap/opu/odata/sap/ZMMGS_BUSCA_CENTRO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZMMGS_BUSCA_RESERV": {
+                "uri": "/sap/opu/odata/sap/ZMMGS_BUSCA_RESERV_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZMMGS_CREA_RECLAMO": {
+                "uri": "/sap/opu/odata/sap/ZMMGS_CREA_RECLAMO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZMMGS_TIPO_RECLAMO": {
+                "uri": "/sap/opu/odata/sap/ZMMGS_TIPO_RECLAMO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZMMGS_RESP_RECLAMO": {
+                "uri": "/sap/opu/odata/sap/ZMMGS_RESP_RECLAMO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZMMGS_REPORT_RESERV": {
+                "uri": "/sap/opu/odata/sap/ZMMGS_REPORT_RESERV_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "2.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.118.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.indra.gestionreclamos.i18n.i18n"
+                }
+            },
+            "ZMMGS_BUSCA_CENTRO":{
+                "preload": true,
+                "dataSource": "ZMMGS_BUSCA_CENTRO",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "ZMMGS_BUSCA_RESERV":{
+                "preload": true,
+                "dataSource": "ZMMGS_BUSCA_RESERV",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "ZMMGS_CREA_RECLAMO":{
+                "preload": true,
+                "dataSource": "ZMMGS_CREA_RECLAMO",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "ZMMGS_TIPO_RECLAMO":{
+                "preload": true,
+                "dataSource": "ZMMGS_TIPO_RECLAMO",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "ZMMGS_RESP_RECLAMO":{
+                "preload": true,
+                "dataSource": "ZMMGS_RESP_RECLAMO",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "ZMMGS_REPORT_RESERV":{
+                "preload": true,
+                "dataSource": "ZMMGS_REPORT_RESERV",
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.indra.gestionreclamos.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteHome",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetHome"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetHome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Home",
+                    "viewName": "Home"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.indra.gestionreclamos.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "comindragestionreclamos"
+    }
+}
