@@ -136,7 +136,7 @@
                                             </form:fields>
                                         </form:FormElement>
 
-                                        <form:FormElement label="{i18n>lblResponsable}">
+                                        <form:FormElement label="{i18n>lblResponsable2}">
                                             <form:fields>
                                                 <Input value="{reserva>/SGTXT}" enabled="false"/>
                                             </form:fields>
@@ -166,7 +166,7 @@
 
                                 <form:FormContainer title="">
                                     <form:formElements>
-                                        <form:FormElement label="{i18n>lblUsuario}">
+                                        <form:FormElement label="{i18n>lblUsuario2}">
                                             <form:fields>
                                                 <Input value="{reserva>/USNAM}" enabled="false"/>
                                             </form:fields>
@@ -213,7 +213,7 @@
                                             </form:fields>
                                         </form:FormElement>
 
-                                        <form:FormElement label="{i18n>lblResponsable}">
+                                        <form:FormElement label="{i18n>lblResponsable3}">
                                             <form:fields>
                                                 <ComboBox id="cboResponsable" required="true" name="responsable" items="{path:'responsable>/'}">
                                                     <core:Item key="{responsable>ZVALOR}" text="{responsable>ZVALOR}" />
